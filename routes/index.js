@@ -74,10 +74,10 @@ router.post('/add-product', async function(req, res) {
         });
         
         await newProduct.save();
-        res.redirect('/');
+        res.redirect('/?tab=products');
     } catch (err) {
         console.error(err);
-        res.redirect('/');
+        res.redirect('/?tab=products');
     }
 });
 
@@ -100,10 +100,10 @@ router.post('/edit-product/:id', async function(req, res) {
             soldProgress: parseInt(soldProgress) || 0
         });
 
-        res.redirect('/');
+        res.redirect('/?tab=products');
     } catch (err) {
         console.error(err);
-        res.redirect('/');
+        res.redirect('/?tab=products');
     }
 });
 
@@ -111,10 +111,10 @@ router.post('/edit-product/:id', async function(req, res) {
 router.post('/delete-product/:id', async function(req, res) {
     try {
         await Product.findOneAndDelete({ id: req.params.id });
-        res.redirect('/');
+        res.redirect('/?tab=products');
     } catch (err) {
         console.error(err);
-        res.redirect('/');
+        res.redirect('/?tab=products');
     }
 });
 
@@ -131,10 +131,10 @@ router.post('/update-order-status/:id', async function(req, res) {
                 await order.save();
             }
         }
-        res.redirect('/');
+        res.redirect('/?tab=orders');
     } catch (err) {
         console.error(err);
-        res.redirect('/');
+        res.redirect('/?tab=orders');
     }
 });
 
